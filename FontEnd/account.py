@@ -1,5 +1,5 @@
 import streamlit as st
-from BEnd.Handle_data import HandleData
+from BackEnd.Handle_data import HandleData
 
 class Account:
     def __init__(self):

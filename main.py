@@ -1,9 +1,9 @@
 # from BEnd.Handle_data import *
-from BEnd.sidebar import *
-from FEnd.home import *
-from FEnd.account import *
-from FEnd.monitor import *
-from FEnd.history import *
+from BackEnd.sidebar import *
+from FontEnd.home import *
+from FontEnd.account import *
+from FontEnd.monitor import *
+from FontEnd.history import *
 
 
 # # Configure the font end for web app

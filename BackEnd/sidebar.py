@@ -1,9 +1,9 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
-from FEnd.home import Home
-from FEnd.account import Account
-from FEnd.monitor import Monitor
-from FEnd.history import History
+from FontEnd.home import Home
+from FontEnd.account import Account
+from FontEnd.monitor import Monitor
+from FontEnd.history import History
 
 
 

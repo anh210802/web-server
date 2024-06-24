@@ -33,7 +33,7 @@ class Account:
             password = st.text_input("Mật khẩu:", type="password")
             submit_button = st.form_submit_button("Xong")
             if submit_button:
-                if username == "admin" and password == "admin":
+                if username == self.username and password == self.password:
                     st.success("Đăng nhập thành công")
                     st.session_state.check_login = True
                     st.experimental_rerun()

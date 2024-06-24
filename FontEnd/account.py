@@ -1,10 +1,9 @@
 import streamlit as st
-from BackEnd.Handle_data import HandleData
+from BackEnd.connectSQLite import SQLite
 
 class Account:
     def __init__(self):
-
-        self.handle_data = HandleData()
+        self.data_user = SQLite()
         self.username = ""
         self.password = ""
 
@@ -12,10 +11,9 @@ class Account:
         if 'check_login' not in st.session_state:
             st.session_state.check_login = False
 
-        st.subheader('Hệ thống giám sát môi trường', divider='rainbow')
+        st.subheader('Hệ thống giám sát môi trường')
         st.subheader('_Tài khoản người dùng_')
 
-        self.handle_data.connectSQL()
         if st.session_state.check_login:
             st.write("Bạn đã đăng nhập.")
             if st.button("Đăng xuất"):
@@ -33,34 +31,20 @@ class Account:
             password = st.text_input("Mật khẩu:", type="password")
             submit_button = st.form_submit_button("Xong")
             if submit_button:
-                if username == self.username and password == self.password:
+                print(f"{username} - {password}")
+                self.data_user.connectSQL()  # Ensure the database is connected before checking login
+                if self.data_user.isLogin(username, password):
                     st.success("Đăng nhập thành công")
                     st.session_state.check_login = True
-                    st.experimental_rerun()
+                    self.data_user.closeSQL()
+                    st.rerun()
                 elif not username:
                     st.error("Vui lòng nhập tài khoản")
                 elif not password:
                     st.error("Vui lòng nhập mật khẩu")
                 else:
                     st.error("Tài khoản hoặc mật khẩu không đúng")
+                self.data_user.closeSQL()  # Ensure the database connection is closed
 
     def isLogin(self):
         return st.session_state.check_login
-    
-    def getUsername(self):
-        login_data_records = self.handle_data.select_login_data()
-        for row in login_data_records:
-            self.username = row[1]
-        return self.username
-    
-    def getPassword(self):
-        login_data_records = self.handle_data.select_login_data()
-        for row in login_data_records:
-            self.password = row[2]
-        return self.password
-    
-
-
-        
-
-    

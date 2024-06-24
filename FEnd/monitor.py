@@ -17,30 +17,8 @@ class Monitor:
         st.subheader('_Giám sát cảm biến_')
             
         if self.check_login:
-            pre_temp = 0
-            pre_humi = 0
-            pre_co = 0
-            pre_pm1 = 0
-            pre_pm25 = 0
-            pre_pm10 = 0
-
             header = st.container(border=True)
             col1, col2, col3 = header.columns(3)
-
-            # col1_container = col1.container(height=150)
-            # col1_col1 , col2_col1 = col1_container.columns(2)
-            # col1_col1.image('image/temp.jpg', width=100)
-            # col2_col1.metric("Nhiệt độ", f"{self.temp}°C", "1.2°C", label_visibility = "visible")
-
-            # col2_container = col2.container(height=150)
-            # col1_col2, col2_col2 = col2_container.columns(2)
-            # col1_col2.image('image/humi.jpg', width=100)
-            # col2_col2.metric("Độ ẩm", f"{self.humi}%", "-4%")
-
-            # col3_container = col3.container(height=150)
-            # col1_col3, col2_col3 = col3_container.columns(2)
-            # col1_col3.image('image/co.jpg', width=100)
-            # col2_col3.metric("Khí CO", f"{self.co}%", "4%")
 
             col1.metric("Nhiệt độ", f"{self.temp} °C", "1.2°C")
             col2.metric("Độ ẩm", f"{self.humi} %", "1.2%")

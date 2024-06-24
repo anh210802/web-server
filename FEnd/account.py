@@ -1,14 +1,26 @@
 import streamlit as st
+from BEnd.Handle_data import HandleData
 
 class Account:
     def __init__(self):
-        if 'check_login' not in st.session_state:
-            st.session_state.check_login = False
+
+        self.handle_data = HandleData()
+        self.username = ""
+        self.password = ""
+        self.check_log = ""
+
 
     def app(self):
+        if 'check_login' not in st.session_state:
+            if self.getCheckLog() == "False":
+                st.session_state.check_login = False
+            else:
+                st.session_state.check_login = True 
+
         st.subheader('Hệ thống giám sát môi trường', divider='rainbow')
         st.subheader('_Tài khoản người dùng_')
 
+        self.handle_data.connectSQL()
         if st.session_state.check_login:
             st.write("Bạn đã đăng nhập.")
             if st.button("Đăng xuất"):
@@ -39,3 +51,26 @@ class Account:
 
     def isLogin(self):
         return st.session_state.check_login
+    
+    def getUsername(self):
+        login_data_records = self.handle_data.select_login_data()
+        for row in login_data_records:
+            self.username = row[1]
+        return self.username
+    
+    def getPassword(self):
+        login_data_records = self.handle_data.select_login_data()
+        for row in login_data_records:
+            self.password = row[2]
+        return self.password
+    
+    def getCheckLog(self):
+        login_data_records = self.handle_data.select_login_data()
+        for row in login_data_records:
+            self.check_log = row[3]
+        return self.check_log
+
+
+        
+
+    

@@ -11,9 +11,7 @@ class History:
     def app(self, log):
         st.subheader('Hệ thống giám sát môi trường', divider='rainbow')
         st.subheader('_Lịch sử_')
-
         self.check_login = log
-
         if self.check_login:
             col_value, col_search = st.columns([3, 1])
             

@@ -8,21 +8,6 @@ class HandleData:
     def __init__(self):
         self.connection_sql = None
         self.cursor_sql = None
-        self.data_sensor = {
-            'temperature': 0,
-            'humidity': 0,
-            'pm1': 0,
-            'pm25': 0,
-            'pm10': 0,
-            'co_value': 0,
-            'max_value': 0,
-            'level': 0,
-            'date': '2021-01-01 00:00:00'
-        }
-        self.data_login = {
-            'username': '',
-            'password': ''
-        }
 
     def connectSQL(self):
         try:
@@ -76,13 +61,16 @@ class HandleData:
         finally:
             self.closeSQL()
 
+    def setStatusLogin(self):
+        update_query = "UPDATE users SET status = 1 WHERE username = 'admin'"
+        try:
+            self.connectSQL()
+            self.cursor_sql.execute(update_query)
+            self.connection_sql.commit()
+            logging.info("Status login updated")
+        except Error as e:
+            logging.error(f"Error updating status login: {e}")
+        finally:
+            self.closeSQL()
 
-handle_data = HandleData()
-handle_data.connectSQL()
-sensor_data_records = handle_data.select_sensor_data()
-for record in sensor_data_records:
-    print(record)
-
-login_data_records = handle_data.select_login_data()
-for record in login_data_records:
-    print(record)
+    

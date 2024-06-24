@@ -7,15 +7,10 @@ class Account:
         self.handle_data = HandleData()
         self.username = ""
         self.password = ""
-        self.check_log = ""
-
 
     def app(self):
         if 'check_login' not in st.session_state:
-            if self.getCheckLog() == "False":
-                st.session_state.check_login = False
-            else:
-                st.session_state.check_login = True 
+            st.session_state.check_login = False
 
         st.subheader('Hệ thống giám sát môi trường', divider='rainbow')
         st.subheader('_Tài khoản người dùng_')
@@ -64,11 +59,6 @@ class Account:
             self.password = row[2]
         return self.password
     
-    def getCheckLog(self):
-        login_data_records = self.handle_data.select_login_data()
-        for row in login_data_records:
-            self.check_log = row[3]
-        return self.check_log
 
 
         

@@ -61,16 +61,5 @@ class HandleData:
         finally:
             self.closeSQL()
 
-    def setStatusLogin(self):
-        update_query = "UPDATE users SET status = 1 WHERE username = 'admin'"
-        try:
-            self.connectSQL()
-            self.cursor_sql.execute(update_query)
-            self.connection_sql.commit()
-            logging.info("Status login updated")
-        except Error as e:
-            logging.error(f"Error updating status login: {e}")
-        finally:
-            self.closeSQL()
 
     

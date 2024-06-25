@@ -6,6 +6,7 @@ class Account:
         self.data_user = SQLite("BackEnd/data_sql.sqlite") # Create a SQLite object to connect to the database
         self.username = ""
         self.password = ""
+        st.session_state.check_login = False
 
     def app(self):
         if 'check_login' not in st.session_state:

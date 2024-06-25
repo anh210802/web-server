@@ -3,7 +3,7 @@ from BackEnd.connectSQLite import SQLite
 
 class Account:
     def __init__(self):
-        self.data_user = SQLite()
+        self.data_user = SQLite("BackEnd/data_sql.sqlite") # Create a SQLite object to connect to the database
         self.username = ""
         self.password = ""
 
@@ -36,7 +36,7 @@ class Account:
                 if self.data_user.isLogin(username, password):
                     st.success("Đăng nhập thành công")
                     st.session_state.check_login = True
-                    self.data_user.closeSQL()
+                    self.data_user.closeSQL()  
                     st.rerun()
                 elif not username:
                     st.error("Vui lòng nhập tài khoản")

@@ -2,7 +2,7 @@ import sqlite3
 import hashlib
 
 # Connect to the database (or create it if it doesn't exist)
-conn = sqlite3.connect("data_sql.db")
+conn = sqlite3.connect("data_sql.sqlite")
 cur = conn.cursor()
 
 # Create the users table if it doesn't exist
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS sensor_data (
     co_value FLOAT,
     max_value FLOAT,
     level INT,
-    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    date TIMESTAMP
 );
 """)
 

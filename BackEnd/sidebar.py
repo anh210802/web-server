@@ -32,10 +32,10 @@ class Sidebar:
         elif selected_page == "Tài khoản":
             self.account.app()
         elif selected_page == "Quan sát":
-            # self.monitor.app(self.account.isLogin())
-            self.monitor.app(True)
+            self.monitor.app(self.account.isLogin())
+            # self.monitor.app(True)
         elif selected_page == "Lịch sử":
-            # self.history.app(self.account.isLogin())
-            self.history.app(True)
+            self.history.app(self.account.isLogin())
+            # self.history.app(True)
 
 

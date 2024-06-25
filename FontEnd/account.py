@@ -18,7 +18,7 @@ class Account:
             st.write("Bạn đã đăng nhập.")
             if st.button("Đăng xuất"):
                 st.session_state.check_login = False
-                st.experimental_rerun()
+                st.rerun()
         else:
             st.write("Bạn chưa đăng nhập. Hãy đăng nhập để sử dụng hệ thống.")
             if st.button("Đăng nhập"):

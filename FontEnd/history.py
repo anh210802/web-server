@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import datetime
-import altair as alt
 import sqlite3
 
 class History:

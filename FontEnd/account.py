@@ -3,7 +3,7 @@ from BackEnd.connectSQLite import SQLite
 
 class Account:
     def __init__(self):
-        self.data_user = SQLite("BackEnd/data_sql.sqlite") # Create a SQLite object to connect to the database
+        self.data_user = SQLite("BackEnd/data_sql.db") # Create a SQLite object to connect to the database
         self.username = ""
         self.password = ""
         st.session_state.check_login = False

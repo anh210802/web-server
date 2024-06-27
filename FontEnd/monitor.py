@@ -5,7 +5,7 @@ import time
 
 class Monitor:
     def __init__(self) -> None:
-        self.db = SQLite("BackEnd/data_sql.sqlite")
+        self.db = SQLite("BackEnd/data_sql.db")
         self.check_login = False
         self.pre_temp = 0
         self.pre_humi = 0

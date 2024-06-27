@@ -43,7 +43,7 @@ class Server:
     def readDataGateWay(self, client_socket, addr):
         conn = None
         try:
-            conn = SQLite("BackEnd/data_sql.sqlite")  # Create a new SQLite instance for this thread
+            conn = SQLite("BackEnd/data_sql.db")  # Create a new SQLite instance for this thread
             conn.connectSQL()
             cursor = conn.cursor
             while self.is_running:

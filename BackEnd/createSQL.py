@@ -2,7 +2,7 @@ import sqlite3
 import hashlib
 
 # Connect to the database (or create it if it doesn't exist)
-conn = sqlite3.connect("data_sql.sqlite")
+conn = sqlite3.connect("data_sql.db")
 cur = conn.cursor()
 
 # Create the users table if it doesn't exist

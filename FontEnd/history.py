@@ -6,7 +6,7 @@ import sqlite3
 class History:
     def __init__(self):
         self.check_login = False
-        self.db_path = 'BackEnd/data_sql.sqlite'
+        self.db_path = 'BackEnd/data_sql.db'
 
     def app(self, log):
         st.subheader('Hệ thống giám sát môi trường', divider='rainbow')

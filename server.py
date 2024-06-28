@@ -51,7 +51,7 @@ class Server:
                     if not data:
                         break
 
-                    split_data = data.split('_')
+                    split_data = data.split('-')
                     if len(split_data) >= 7:
                         temp = float(split_data[1])
                         humi = float(split_data[2])

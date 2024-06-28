@@ -1,18 +1,18 @@
 import socket
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import ThreadPoolExecutor
 from threading import Lock
 from BackEnd.connectSQLite import SQLite
 import datetime
-
 
 class Server:
     def __init__(self, _host, _port):
         self.host = _host
         self.port = _port
         self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) 
         self.clients = []
         self.is_running = True
-        self.lock = Lock()  # Initialize the lock here
+        self.lock = Lock()
 
     def start(self):
         self.server_socket.bind((self.host, self.port))
@@ -32,7 +32,6 @@ class Server:
                 except Exception as e:
                     print(f"Error accepting connection: {e}")
 
-            # Ensure all client connections are properly closed during shutdown
             for future, client_socket in self.clients:
                 client_socket.close()
                 try:
@@ -43,7 +42,7 @@ class Server:
     def readDataGateWay(self, client_socket, addr):
         conn = None
         try:
-            conn = SQLite("BackEnd/data_sql.db")  # Create a new SQLite instance for this thread
+            conn = SQLite("BackEnd/data_sql.sqlite")
             conn.connectSQL()
             cursor = conn.cursor
             while self.is_running:

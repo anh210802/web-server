@@ -20,10 +20,11 @@ home.setImage1('image/img1.jpg')
 home.setImage2('image/img2.jpg')
 
 sidebar = Sidebar(home, account, monitor, history)
+# threading.Thread(target=sidebar.run).start()
 sidebar.run()
 
 # Configure the server
-server = Server('localhost', 2108)
+server = Server('177.30.34.96', 2108)
 threading.Thread(target=server.start).start()
 # server.start()
 

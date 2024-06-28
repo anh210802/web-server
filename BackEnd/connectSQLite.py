@@ -2,7 +2,6 @@ import sys
 import sqlite3
 import hashlib
 
-
 class SQLite:
     def __init__(self, fileName):
         self.conn = None
@@ -53,7 +52,7 @@ class SQLite:
             return None
         
         try:
-            self.cursor.execute("SELECT * FROM sensor_data ")
+            self.cursor.execute("SELECT * FROM sensor_data")
             result = self.cursor.fetchall()
             return result
         except sqlite3.Error as e:
@@ -72,18 +71,3 @@ class SQLite:
         except sqlite3.Error as e:
             print(f"Error executing query: {e}")
             return None
-        
-
-# # Test the SQLite class
-# if __name__ == "__main__":
-#     db = SQLite('data_sql.sqlite')
-#     db.connectSQL()
-#     print(db.isLogin('admin', 'admin'))
-#     print(db.isLogin('admin', 'admin1'))
-#     print(db.isLogin('admin1', 'admin'))
-#     print(db.getDataSensor())
-
-
-    
-
-    

@@ -4,7 +4,7 @@ from FontEnd.home import *
 from FontEnd.account import *
 from FontEnd.monitor import *
 from FontEnd.history import *
-from BackEnd.server import *
+from server import *
 import threading
 
 
@@ -23,8 +23,4 @@ sidebar = Sidebar(home, account, monitor, history)
 # threading.Thread(target=sidebar.run).start()
 sidebar.run()
 
-# Configure the server
-server = Server('177.30.34.75', 2108)
-threading.Thread(target=server.start).start()
-# server.start()
 

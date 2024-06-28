@@ -55,6 +55,7 @@ class Monitor:
 
             # Set a time interval for auto-refresh
             time.sleep(1)
+            self.db.closeSQL()
             st.rerun()
 
         else:

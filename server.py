@@ -9,7 +9,7 @@ class Server:
         self.host = _host
         self.port = _port
         self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) 
+        self.server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.clients = []
         self.is_running = True
         self.lock = Lock()
@@ -18,7 +18,7 @@ class Server:
         self.server_socket.bind((self.host, self.port))
         self.server_socket.listen(5)
         print(f"Server started at {self.host}:{self.port}")
-
+        print("Waiting for connections...")
         with ThreadPoolExecutor(max_workers=5) as executor:
             while self.is_running:
                 try:
@@ -103,3 +103,8 @@ class Server:
             except Exception as e:
                 print(f"Error closing client connection: {e}")
         print("Server stopped")
+
+
+if __name__ == "__main__":
+    server = Server("177.30.34.96", 2108)
+    server.start()

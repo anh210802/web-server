@@ -24,7 +24,7 @@ sidebar = Sidebar(home, account, monitor, history)
 sidebar.run()
 
 # Configure the server
-server = Server('177.30.34.96', 2108)
+server = Server('177.30.34.75', 2108)
 threading.Thread(target=server.start).start()
 # server.start()
 

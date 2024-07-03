@@ -86,9 +86,9 @@ class Server:
             print(f"Connection from {addr} closed")
 
     def calculate_level(self, max_value):
-        if max_value <= 35:
+        if max_value <= 50:
             return 1
-        elif max_value <= 55:
+        elif max_value <= 150:
             return 2
         else:
             return 3
@@ -106,5 +106,5 @@ class Server:
 
 
 if __name__ == "__main__":
-    server = Server("177.30.34.96", 2108)
+    server = Server("177.30.34.50", 2108)
     server.start()

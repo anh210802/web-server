@@ -50,7 +50,7 @@ class Server:
                     data = client_socket.recv(1024).decode('utf-8')
                     if not data:
                         break
-
+                    # print(f"Received from {addr}: {data}")
                     split_data = data.split('-')
                     if len(split_data) >= 7:
                         temp = float(split_data[1])

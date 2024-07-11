@@ -106,5 +106,5 @@ class Server:
 
 
 if __name__ == "__main__":
-    server = Server("177.30.34.50", 2108)
+    server = Server("177.30.34.202", 2108)
     server.start()
